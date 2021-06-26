@@ -3,7 +3,12 @@ import React from 'react';
 
 function Students(props) {
 
-    let grades = props.grades;
+    const grades = props.grades;
+    const data = grades.reduce(function(valorAnterior, valorActual){
+      return Number(valorAnterior) + Number(valorActual);
+    });
+    const result = (data / grades.length) || 0;
+    const average = result.toFixed(3);
    
     return (
         <div className="UserInfo">
@@ -24,7 +29,7 @@ function Students(props) {
          Skill: {props.skill} 
         </div>
         <div className="UserInfo-average">
-         Average: A calcular... 
+         Average: {average}%
         </div>
       </div>
     );

@@ -20,7 +20,7 @@ function App() {
 
          { !students ? 'Cargando...' :
           students.map( (student, index)=>{
-            return <Students name={student.firstName} lastName={student.lastName} pic={student.pic} email={student.email} company={student.company} skill={student.skill} average={student.average} />
+            return <Students name={student.firstName} lastName={student.lastName} pic={student.pic} email={student.email} company={student.company} skill={student.skill} grades={student.grades} />
           })
          }
       
