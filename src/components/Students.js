@@ -13,7 +13,7 @@ function Students({ name, pic, lastName, grades, email, company, skill }) {
       <div id="avatar">
         <img className="Avatar" src={pic} alt={name} />
       </div>
-      <div id="info">
+      <div>
         <div id="nameTitle">
           <div className="UserInfo-name UserInfo-lastName">
             <b>
@@ -21,11 +21,13 @@ function Students({ name, pic, lastName, grades, email, company, skill }) {
             </b>
           </div>
         </div>
-        <div id="data">
-          <div className="UserInfo-email">Email: {email}</div>
-          <div className="UserInfo-company">Company: {company}</div>
-          <div className="UserInfo-skill">Skill: {skill}</div>
-          <div className="UserInfo-average">Average: {average}%</div>
+        <div id="info">
+          <div id="data">
+            <div className="UserInfo-email">Email: {email}</div>
+            <div className="UserInfo-company">Company: {company}</div>
+            <div className="UserInfo-skill">Skill: {skill}</div>
+            <div className="UserInfo-average">Average: {average}%</div>
+          </div>
         </div>
       </div>
     </div>

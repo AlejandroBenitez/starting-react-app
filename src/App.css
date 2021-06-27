@@ -1,32 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+
 .App {
-  text-align: center;
+  background-color: #efefef;
+  height: 100%;
+  padding: 100px;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.input-box {
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  padding: 10px;
+  align-self: center;
+  width: 95%;
+  border: 0;
+  border-bottom: 1px solid rgba(177, 177, 177, 0.5);
+  outline: none;
 }
-
-.App-header {
-  background-color: #ffffff;
-  min-height: 100vh;
+.input-box:focus {
+  border-color: rgba(26, 26, 26);
+}
+.container-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  background-color: white;
+  width: 60vw;
+  height: 80vh;
+  border: 1px solid rgb(214, 213, 213);
+  margin: 0 auto;
+  border-radius: 5px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  box-shadow: 0 2px 2px 1px rgb(204, 204, 204);
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }

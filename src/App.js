@@ -5,6 +5,7 @@ import Students from './components/Students';
 function App() {
   const url = 'https://api.hatchways.io/assessment/students';
   const [students, setStudents] = useState();
+  const [filter, setFilter] = useState('');
   const fetchApi = async () => {
     const response = await fetch(url);
     const responseJSON = await response.json();
@@ -14,23 +15,43 @@ function App() {
   useEffect(() => {
     fetchApi();
   }, []);
+  const onChange = (event) => {
+    setFilter(event.target.value);
+  };
   return (
     <div className="App">
-      {!students
-        ? 'Cargando...'
-        : students.map((student) => {
-            return (
-              <Students
-                name={student.firstName}
-                lastName={student.lastName}
-                pic={student.pic}
-                email={student.email}
-                company={student.company}
-                skill={student.skill}
-                grades={student.grades}
-              />
-            );
-          })}
+      <div className="container-box">
+        <input
+          onChange={onChange}
+          className="input-box"
+          type="text"
+          placeholder="Search by name"
+        />{' '}
+        {!students
+          ? 'Cargando...'
+          : students
+              .filter(
+                (student) =>
+                  student.firstName
+                    .toLowerCase()
+                    .includes(filter.toLowerCase()) ||
+                  student.lastName.toLowerCase().includes(filter.toLowerCase())
+              )
+              .map((student) => {
+                return (
+                  <Students
+                    name={student.firstName}
+                    lastName={student.lastName}
+                    pic={student.pic}
+                    email={student.email}
+                    company={student.company}
+                    skill={student.skill}
+                    grades={student.grades}
+                    key={student.email}
+                  />
+                );
+              })}
+      </div>
     </div>
   );
 }

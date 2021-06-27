@@ -3,17 +3,20 @@
 .Avatar {
   border: 1px solid rgb(177, 177, 177);
   border-radius: 50%;
-  width: 12vw;
+  width: 150px;
 }
 
+.UserInfo {
+  border-bottom: 1px solid rgba(177, 177, 177, 0.2);
+  padding: 20px 30px;
+}
 .UserInfo-name .UserInfo-lastName {
   font-weight: bold;
   font-size: 200px;
 }
 
 #avatar {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 30px;
   margin-top: 10px;
 }
 
@@ -21,18 +24,21 @@
   display: flex;
 }
 #nameTitle {
-  margin: 5px;
   font-size: 45px;
   text-transform: uppercase;
+  margin-bottom: 3px;
+  text-align: left;
 }
 #info {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 15px;
   font-family: 'Raleway', sans-serif;
-  border: 1px solid red;
-  margin-left: 30px;
 }
 #data {
-  color: rgb(100, 100, 100);
+  color: rgb(36, 36, 36);
   font-size: 19px;
+  text-align: left;
+  margin-left: 20px;
 }
