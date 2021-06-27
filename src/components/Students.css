@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+
+.Avatar {
+  border: 1px solid rgb(177, 177, 177);
+  border-radius: 50%;
+  width: 12vw;
+}
+
+.UserInfo-name .UserInfo-lastName {
+  font-weight: bold;
+  font-size: 200px;
+}
+
+#avatar {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#flex-container {
+  display: flex;
+}
+#nameTitle {
+  margin: 5px;
+  font-size: 45px;
+  text-transform: uppercase;
+}
+#info {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Raleway', sans-serif;
+  border: 1px solid red;
+  margin-left: 30px;
+}
+#data {
+  color: rgb(100, 100, 100);
+  font-size: 19px;
+}

@@ -1,0 +1,69 @@
+{
+  "env": {
+    "es2020": true,
+    "jest": true,
+    "browser": true,
+    "commonjs": true,
+    "serviceworker": true
+  },
+  "extends": [
+    "airbnb",
+    "react-app",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jest-dom/recommended",
+    "plugin:testing-library/react",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+  "settings": {
+    "import/ignore": ["/testUtils"],
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": "warn",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto",
+        "singleQuote": true
+      }
+    ],
+    "import/no-cycle": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "react/forbid-prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": "off",
+    "prefer-promise-reject-errors": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-restricted-imports": [
+      "warn",
+      {
+        "paths": [
+          {
+            "name": "react",
+            "importNames": ["default"]
+          }
+        ]
+      }
+    ]
+  }
+}
