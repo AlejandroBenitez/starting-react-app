@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Grade from './Grade';
 import Tag from './Tag';
+import TagInput from './TagInput';
 
 function Student({
   name,
@@ -53,7 +54,7 @@ function Student({
             <div className="UserInfo-company">Company: {company}</div>
             <div className="UserInfo-skill">Skill: {skill}</div>
             <div className="UserInfo-average">Average: {average}%</div>
-            <Tag addTag={addTag} studentEmail={email} />
+            <TagInput addTag={addTag} studentEmail={email} />
           </div>
           {showList && <Grade grades={grades} />}
         </div>
@@ -66,7 +67,7 @@ function Student({
 }
 Student.propTypes = {
   grades: PropTypes.array.isRequired,
-  addTag: PropTypes.array.isRequired,
+  addTag: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   pic: PropTypes.string.isRequired,
   skill: PropTypes.string.isRequired,

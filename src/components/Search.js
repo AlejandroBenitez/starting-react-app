@@ -1,7 +1,7 @@
 import './Search.css';
 import PropTypes from 'prop-types';
 
-function Search({ onchange, placeholder }) {
+function Search({ onchange, placeholder, tag }) {
   return (
     <input
       onChange={onchange}
@@ -15,6 +15,7 @@ function Search({ onchange, placeholder }) {
 Search.propTypes = {
   onchange: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
 };
 
 export default Search;

@@ -26,7 +26,14 @@ function App() {
 
   const addTag = (event, studentEmail) => {
     if (event.key === 'Enter') {
-      console.log(studentEmail);
+      const studentIndex = students.findIndex(
+        (st) => st.email === studentEmail
+      );
+      const studentsCopy = [...students];
+      studentsCopy[studentIndex].tag = [];
+      studentsCopy[studentIndex].tag.push(event.target.value);
+      setStudents(studentsCopy);
+      console.log(students);
     }
   };
 
@@ -50,8 +57,7 @@ function App() {
                       .includes(filter.toLowerCase()) ||
                     student.lastName
                       .toLowerCase()
-                      .includes(filter.toLowerCase()) ||
-                    student.tag.toLowerCase().includes(filter.toLowerCase())
+                      .includes(filter.toLowerCase())
                 )
                 .map((student) => {
                   return (
