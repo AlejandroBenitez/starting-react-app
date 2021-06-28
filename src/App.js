@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Student from './components/Student';
 import Search from './components/Search';
+import Tag from './components/Tag';
 
 function App() {
   const url = 'https://api.hatchways.io/assessment/students';
@@ -19,6 +20,15 @@ function App() {
   const onChange = (event) => {
     setFilter(event.target.value);
   };
+  const onChangeTag = (event) => {
+    setFilter(event.target.value);
+  };
+
+  const addTag = (event, studentEmail) => {
+    if (event.key === 'Enter') {
+      console.log(studentEmail);
+    }
+  };
 
   useEffect(() => {
     fetchApi();
@@ -27,7 +37,8 @@ function App() {
   return (
     <div className="App">
       <div className="container-box">
-        <Search onchange={onChange} />{' '}
+        <Search onchange={onChange} placeholder="Search by name" tag="0" />{' '}
+        <Search onchange={onChangeTag} placeholder="Search by tag" tag="1" />{' '}
         <div className="data-box">
           {!students
             ? 'Cargando...'
@@ -39,7 +50,8 @@ function App() {
                       .includes(filter.toLowerCase()) ||
                     student.lastName
                       .toLowerCase()
-                      .includes(filter.toLowerCase())
+                      .includes(filter.toLowerCase()) ||
+                    student.tag.toLowerCase().includes(filter.toLowerCase())
                 )
                 .map((student) => {
                   return (
@@ -51,6 +63,7 @@ function App() {
                       company={student.company}
                       skill={student.skill}
                       grades={student.grades}
+                      addTag={addTag}
                       key={student.email}
                     />
                   );

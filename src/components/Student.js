@@ -2,8 +2,18 @@ import './Student.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Grade from './Grade';
+import Tag from './Tag';
 
-function Student({ name, pic, lastName, grades, email, company, skill }) {
+function Student({
+  name,
+  pic,
+  lastName,
+  grades,
+  email,
+  company,
+  skill,
+  addTag,
+}) {
   const DECIMAL_AVERAGE = 3;
   const data = grades.reduce((beforeValue, afterValue) => {
     return Number(beforeValue) + Number(afterValue);
@@ -43,6 +53,7 @@ function Student({ name, pic, lastName, grades, email, company, skill }) {
             <div className="UserInfo-company">Company: {company}</div>
             <div className="UserInfo-skill">Skill: {skill}</div>
             <div className="UserInfo-average">Average: {average}%</div>
+            <Tag addTag={addTag} studentEmail={email} />
           </div>
           {showList && <Grade grades={grades} />}
         </div>
@@ -55,6 +66,7 @@ function Student({ name, pic, lastName, grades, email, company, skill }) {
 }
 Student.propTypes = {
   grades: PropTypes.array.isRequired,
+  addTag: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   pic: PropTypes.string.isRequired,
   skill: PropTypes.string.isRequired,
