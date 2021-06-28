@@ -1,0 +1,16 @@
+.input-box {
+  font-size: 20px;
+  font-family: 'Raleway', sans-serif;
+  padding: 20px;
+  align-self: center;
+  width: 95%;
+  border: 0;
+  border-bottom: 1px solid rgba(177, 177, 177, 0.5);
+  outline: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.input-box:focus {
+  border-color: rgba(26, 26, 26);
+}

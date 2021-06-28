@@ -1,40 +1,59 @@
-import './Students.css';
+import './Student.css';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+import Grade from './Grade';
 
-function Students({ name, pic, lastName, grades, email, company, skill }) {
+function Student({ name, pic, lastName, grades, email, company, skill }) {
+  const DECIMAL_AVERAGE = 3;
   const data = grades.reduce((beforeValue, afterValue) => {
     return Number(beforeValue) + Number(afterValue);
   });
   const result = data / grades.length || 0;
-  const average = result.toFixed(3);
+  const average = result.toFixed(DECIMAL_AVERAGE);
+
+  const [showList, setShowList] = useState(false);
+  const [showButton, setButton] = useState('+');
+
+  const show = () => {
+    if (showList) {
+      setShowList(false);
+      setButton('+');
+    } else {
+      setShowList(true);
+      setButton('-');
+    }
+  };
 
   return (
-    <div className="UserInfo" id="flex-container">
+    <div className="UserInfo flex-container">
       <div id="avatar">
         <img className="Avatar" src={pic} alt={name} />
       </div>
-      <div>
-        <div id="nameTitle">
+      <div className="info-container">
+        <div className="nameTitle">
           <div className="UserInfo-name UserInfo-lastName">
             <b>
               {name} {lastName}
             </b>
           </div>
         </div>
-        <div id="info">
-          <div id="data">
+        <div className="info">
+          <div className="data">
             <div className="UserInfo-email">Email: {email}</div>
             <div className="UserInfo-company">Company: {company}</div>
             <div className="UserInfo-skill">Skill: {skill}</div>
             <div className="UserInfo-average">Average: {average}%</div>
           </div>
+          {showList && <Grade grades={grades} />}
         </div>
       </div>
+      <button className="boton-show" type="button" onClick={show}>
+        {showButton}
+      </button>
     </div>
   );
 }
-
-Students.propTypes = {
+Student.propTypes = {
   grades: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   pic: PropTypes.string.isRequired,
@@ -44,4 +63,4 @@ Students.propTypes = {
   company: PropTypes.string.isRequired,
 };
 
-export default Students;
+export default Student;

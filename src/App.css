@@ -5,19 +5,7 @@
   height: 100%;
   padding: 100px;
 }
-.input-box {
-  font-size: 20px;
-  font-family: 'Raleway', sans-serif;
-  padding: 10px;
-  align-self: center;
-  width: 95%;
-  border: 0;
-  border-bottom: 1px solid rgba(177, 177, 177, 0.5);
-  outline: none;
-}
-.input-box:focus {
-  border-color: rgba(26, 26, 26);
-}
+
 .container-box {
   display: flex;
   flex-direction: column;
@@ -28,8 +16,8 @@
   border: 1px solid rgb(214, 213, 213);
   margin: 0 auto;
   border-radius: 5px;
-  overflow-y: scroll;
   scrollbar-width: none;
+  overflow-y: scroll;
   -ms-overflow-style: none;
   box-shadow: 0 2px 2px 1px rgb(204, 204, 204);
 }
@@ -37,3 +25,35 @@
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
+::-webkit-scrollbar:hover {
+  width: 1px;
+  background: scroll; /* make scrollbar transparent */
+}
+/*
+.data-box::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.data-box::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+.data-box::-webkit-scrollbar-button:increment,
+.data::-webkit-scrollbar-button {
+  display: none;
+}
+
+.data-box::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+.data::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+.data::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+*/

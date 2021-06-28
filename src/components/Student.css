@@ -20,25 +20,48 @@
   margin-top: 10px;
 }
 
-#flex-container {
+.flex-container {
   display: flex;
 }
-#nameTitle {
+.nameTitle {
   font-size: 45px;
   text-transform: uppercase;
   margin-bottom: 3px;
   text-align: left;
 }
-#info {
+.info {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
   margin-bottom: 15px;
   font-family: 'Raleway', sans-serif;
 }
-#data {
+.data {
   color: rgb(36, 36, 36);
   font-size: 19px;
   text-align: left;
   margin-left: 20px;
+}
+.scores {
+  color: rgb(36, 36, 36);
+  list-style-type: none;
+  position: relative;
+  text-align: left;
+  font-size: 19px;
+  font-family: 'Raleway', sans-serif;
+}
+.boton-show {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  font-size: 70px;
+  color: rgb(129, 129, 129);
+  position: relative;
+  height: fit-content;
+  line-height: 100%;
+  margin-top: -10px;
+  margin-left: auto;
+}
+.boton-show:hover {
+  color: rgb(54, 54, 54);
 }
