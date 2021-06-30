@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';

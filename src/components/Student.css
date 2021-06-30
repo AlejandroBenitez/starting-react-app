@@ -37,19 +37,12 @@
   font-family: 'Raleway', sans-serif;
 }
 .data {
-  color: rgb(36, 36, 36);
+  color: rgb(2, 2, 2);
   font-size: 19px;
   text-align: left;
   margin-left: 20px;
 }
-.scores {
-  color: rgb(36, 36, 36);
-  list-style-type: none;
-  position: relative;
-  text-align: left;
-  font-size: 19px;
-  font-family: 'Raleway', sans-serif;
-}
+
 .boton-show {
   border: none;
   background-color: inherit;

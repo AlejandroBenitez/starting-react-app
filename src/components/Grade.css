@@ -1,0 +1,8 @@
+.scores {
+  color: rgb(2, 2, 2);
+  list-style-type: none;
+  position: relative;
+  text-align: left;
+  font-size: 19px;
+  font-family: 'Raleway', sans-serif;
+}

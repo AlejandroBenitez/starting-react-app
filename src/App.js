@@ -2,13 +2,14 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Student from './components/Student';
 import Search from './components/Search';
-import Tag from './components/Tag';
 
 function App() {
   const url = 'https://api.hatchways.io/assessment/students';
 
   const [filter, setFilter] = useState('');
+  const [filterTag, setFilterTag] = useState('');
   const [students, setStudents] = useState([]);
+  const [showTag, setShowTag] = useState(false);
 
   const fetchApi = async () => {
     const response = await fetch(url);
@@ -21,7 +22,7 @@ function App() {
     setFilter(event.target.value);
   };
   const onChangeTag = (event) => {
-    setFilter(event.target.value);
+    setFilterTag(event.target.value);
   };
 
   const addTag = (event, studentEmail) => {
@@ -30,10 +31,11 @@ function App() {
         (st) => st.email === studentEmail
       );
       const studentsCopy = [...students];
-      studentsCopy[studentIndex].tag = [];
-      studentsCopy[studentIndex].tag.push(event.target.value);
+      studentsCopy[studentIndex].tags = studentsCopy[studentIndex].tags
+        ? [...studentsCopy[studentIndex].tags, event.target.value]
+        : [event.target.value];
       setStudents(studentsCopy);
-      console.log(students);
+      setShowTag(true);
     }
   };
 
@@ -59,6 +61,12 @@ function App() {
                       .toLowerCase()
                       .includes(filter.toLowerCase())
                 )
+                .filter((student) =>
+                  filterTag
+                    ? student.tags?.some((tag) => tag.includes(filterTag))
+                    : student
+                )
+
                 .map((student) => {
                   return (
                     <Student
@@ -70,6 +78,8 @@ function App() {
                       skill={student.skill}
                       grades={student.grades}
                       addTag={addTag}
+                      tags={student.tags}
+                      showTag={showTag}
                       key={student.email}
                     />
                   );

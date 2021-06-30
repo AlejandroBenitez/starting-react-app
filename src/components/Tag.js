@@ -1,13 +1,19 @@
 import './Tag.css';
-import Chip from '@material-ui/core/Chip';
 import PropTypes from 'prop-types';
 
-function Tag({ name }) {
-  return <Chip label={name} />;
+function Tag({ tags, showTag }) {
+  return (
+    <ul className="tags">
+      {tags?.map((tag) => (
+        <li className="tag">{tag}</li>
+      ))}
+    </ul>
+  );
 }
 
 Tag.propTypes = {
-  name: PropTypes.string.isRequired,
+  tags: PropTypes.array.isRequired,
+  showTag: PropTypes.bool.isRequired,
 };
 
 export default Tag;

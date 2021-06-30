@@ -14,6 +14,8 @@ function Student({
   company,
   skill,
   addTag,
+  tags,
+  showTag,
 }) {
   const DECIMAL_AVERAGE = 3;
   const data = grades.reduce((beforeValue, afterValue) => {
@@ -54,6 +56,8 @@ function Student({
             <div className="UserInfo-company">Company: {company}</div>
             <div className="UserInfo-skill">Skill: {skill}</div>
             <div className="UserInfo-average">Average: {average}%</div>
+            {showTag && <Tag tags={tags} showTag={showTag} />}
+
             <TagInput addTag={addTag} studentEmail={email} />
           </div>
           {showList && <Grade grades={grades} />}
@@ -67,6 +71,8 @@ function Student({
 }
 Student.propTypes = {
   grades: PropTypes.array.isRequired,
+  showTag: PropTypes.bool.isRequired,
+  tags: PropTypes.array.isRequired,
   addTag: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   pic: PropTypes.string.isRequired,

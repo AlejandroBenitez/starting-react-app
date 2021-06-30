@@ -1,1 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.tag {
+  list-style-type: none;
+  position: relative;
+  text-align: left;
+  font-size: 19px;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(221, 221, 221);
+  box-shadow: 0 1px 1px 1px rgb(204, 204, 204);
+  color: rgb(2, 2, 2);
+  display: inline-block;
+  margin-right: 3px;
+  margin-left: 3px;
+  padding: 8px;
+  text-align: center;
+  border-radius: 5px;
+}
