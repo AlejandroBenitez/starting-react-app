@@ -2,11 +2,11 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Student from './components/Student';
 import Search from './components/Search';
-import { searchStudents } from './studentsUtils';
+import { searchStudents, buildStudentWithCompleteName } from './studentsUtils';
 import { fetchApi } from './api';
 
 function App() {
-  const URL_DATA = 'https://api.hatchways.io/assessment/student';
+  const URL_DATA = 'https://api.hatchways.io/assessment/students';
 
   const [students, setStudents] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,20 +17,21 @@ function App() {
   const [filterName, setFilterName] = useState('');
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      setHasError(false);
-      try {
-        const res = await fetch(URL_DATA);
-        const json = await res.json();
-
-        setStudents(json.students);
-      } catch (e) {
+    fetchApi({
+      url: URL_DATA,
+      onPreFetch: () => {
+        setIsLoading(true);
+        setHasError(false);
+      },
+      onSuccess: (dataJson) => {
+        setStudents(dataJson.students.map(buildStudentWithCompleteName));
+        setIsLoading(false);
+      },
+      onFail: (error) => {
         setHasError(true);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
+        setIsLoading(false);
+      },
+    });
   }, []);
 
   const onChange = (event) => {
