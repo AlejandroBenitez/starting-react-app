@@ -2,24 +2,39 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import Student from './components/Student';
 import Search from './components/Search';
+import { searchStudents } from './studentsUtils';
+import { fetchApi } from './api';
 
 function App() {
-  const url = 'https://api.hatchways.io/assessment/students';
+  const URL_DATA = 'https://api.hatchways.io/assessment/student';
 
-  const [filter, setFilter] = useState('');
-  const [filterTag, setFilterTag] = useState('');
   const [students, setStudents] = useState([]);
-  const [showTag, setShowTag] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  const fetchApi = async () => {
-    const response = await fetch(url);
-    const responseJSON = await response.json();
-    const data = responseJSON.students;
-    setStudents(data);
-  };
+  const [showTag, setShowTag] = useState(false);
+  const [filterTag, setFilterTag] = useState('');
+  const [filterName, setFilterName] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      setHasError(false);
+      try {
+        const res = await fetch(URL_DATA);
+        const json = await res.json();
+
+        setStudents(json.students);
+      } catch (e) {
+        setHasError(true);
+      }
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
 
   const onChange = (event) => {
-    setFilter(event.target.value);
+    setFilterName(event.target.value);
   };
   const onChangeTag = (event) => {
     setFilterTag(event.target.value);
@@ -39,51 +54,40 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    fetchApi();
-  }, []);
-
   return (
     <div className="App">
       <div className="container-box">
-        <Search onchange={onChange} placeholder="Search by name" tag="0" />{' '}
-        <Search onchange={onChangeTag} placeholder="Search by tag" tag="1" />{' '}
+        <Search onchange={onChange} placeholder="Search by name" />{' '}
+        <Search onchange={onChangeTag} placeholder="Search by tag" />{' '}
         <div className="data-box">
-          {!students
-            ? 'Cargando...'
-            : students
-                .filter(
-                  (student) =>
-                    student.firstName
-                      .toLowerCase()
-                      .includes(filter.toLowerCase()) ||
-                    student.lastName
-                      .toLowerCase()
-                      .includes(filter.toLowerCase())
-                )
-                .filter((student) =>
-                  filterTag
-                    ? student.tags?.some((tag) => tag.includes(filterTag))
-                    : student
-                )
-
-                .map((student) => {
-                  return (
-                    <Student
-                      name={student.firstName}
-                      lastName={student.lastName}
-                      pic={student.pic}
-                      email={student.email}
-                      company={student.company}
-                      skill={student.skill}
-                      grades={student.grades}
-                      addTag={addTag}
-                      tags={student.tags}
-                      showTag={showTag}
-                      key={student.email}
-                    />
-                  );
-                })}
+          {hasError && (
+            <p>Something went wrong. We cant load the data. Try again later</p>
+          )}
+          {isLoading ? (
+            <p>Loading ...</p>
+          ) : (
+            searchStudents({
+              students,
+              filterName,
+              filterTag,
+            }).map((student) => {
+              return (
+                <Student
+                  name={student.firstName}
+                  lastName={student.lastName}
+                  pic={student.pic}
+                  email={student.email}
+                  company={student.company}
+                  skill={student.skill}
+                  grades={student.grades}
+                  addTag={addTag}
+                  tags={student.tags}
+                  showTag={showTag}
+                  key={student.email}
+                />
+              );
+            })
+          )}
         </div>
       </div>
     </div>

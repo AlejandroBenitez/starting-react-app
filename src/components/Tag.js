@@ -1,7 +1,7 @@
 import './Tag.css';
 import PropTypes from 'prop-types';
 
-function Tag({ tags, showTag }) {
+function Tag({ tags }) {
   return (
     <ul className="tags">
       {tags?.map((tag) => (
@@ -13,7 +13,6 @@ function Tag({ tags, showTag }) {
 
 Tag.propTypes = {
   tags: PropTypes.array.isRequired,
-  showTag: PropTypes.bool.isRequired,
 };
 
 export default Tag;

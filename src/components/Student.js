@@ -56,7 +56,7 @@ function Student({
             <div className="UserInfo-company">Company: {company}</div>
             <div className="UserInfo-skill">Skill: {skill}</div>
             <div className="UserInfo-average">Average: {average}%</div>
-            {showTag && <Tag tags={tags} showTag={showTag} />}
+            {showTag && <Tag tags={tags} />}
 
             <TagInput addTag={addTag} studentEmail={email} />
           </div>
