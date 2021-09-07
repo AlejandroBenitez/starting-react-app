@@ -1,8 +1,40 @@
-.scores {
-  color: rgb(2, 2, 2);
-  list-style-type: none;
-  position: relative;
-  text-align: left;
-  font-size: 19px;
-  font-family: 'Raleway', sans-serif;
+@media screen and (min-width: 320px) {
+  .scores {
+    color: rgb(2, 2, 2);
+    list-style-type: none;
+    position: relative;
+    text-align: left;
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+  }
+}
+@media screen and (min-width: 420px) {
+  .scores {
+    color: rgb(2, 2, 2);
+    list-style-type: none;
+    position: relative;
+    text-align: left;
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+  }
+}
+@media screen and (min-width: 680px) {
+  .scores {
+    color: rgb(2, 2, 2);
+    list-style-type: none;
+    position: relative;
+    text-align: left;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+  }
+}
+@media screen and (min-width: 960px) {
+  .scores {
+    color: rgb(2, 2, 2);
+    list-style-type: none;
+    position: relative;
+    text-align: left;
+    font-size: 19px;
+    font-family: 'Raleway', sans-serif;
+  }
 }

@@ -32,6 +32,7 @@ function App() {
         setIsLoading(false);
       },
     });
+    document.title = 'Robots AB';
   }, []);
 
   const onChange = (event) => {
@@ -57,6 +58,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className="main-title">
+        <h1>Robots of Alejandro Benitez</h1>
+      </div>
       <div className="container-box">
         <Search onchange={onChange} placeholder="Search by name" />{' '}
         <Search onchange={onChangeTag} placeholder="Search by tag" />{' '}
